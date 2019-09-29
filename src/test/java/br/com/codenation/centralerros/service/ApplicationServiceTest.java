@@ -1,5 +1,6 @@
 package br.com.codenation.centralerros.service;
 
+import br.com.codenation.centralerros.dto.entitty.ApplicationDTO;
 import br.com.codenation.centralerros.entity.Application;
 import br.com.codenation.centralerros.entity.Company;
 import br.com.codenation.centralerros.exception.MessageException;
@@ -31,9 +32,9 @@ public class ApplicationServiceTest {
 
     @Test
     public void deveSalvarUmaApplication() throws MessageException {
-        Application app = buildApplication(null);
-        Mockito.when(applicationRepository.save(app)).thenReturn(buildApplication(10L));
-        Application result = applicationService.save(app);
+        ApplicationDTO app = buildApplicationDTO(null);
+        Mockito.when(applicationService.save(app)).thenReturn(buildApplicationDTO(10L));
+        ApplicationDTO result = applicationService.save(app);
         Assert.assertThat(result.getId(), Matchers.equalTo(10L));
     }
 
@@ -62,6 +63,14 @@ public class ApplicationServiceTest {
                 .appName("Amazon Cloud")
                 .company(Company.builder().id(1L).build())
                 .log(null)
+                .build();
+    }
+
+    private ApplicationDTO buildApplicationDTO(Long id) {
+        return ApplicationDTO.builder()
+                .id(id)
+                .appName("Amazon Cloud")
+                .codeCompany("contaazul")
                 .build();
     }
 

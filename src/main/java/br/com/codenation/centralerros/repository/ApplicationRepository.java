@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
-    List<Application> findApplicationsByCompanyIdAndUserId(Long companyId, Long userId);
+    List<Application> findApplicationsByCompanyId(Long companyId);
 
 }

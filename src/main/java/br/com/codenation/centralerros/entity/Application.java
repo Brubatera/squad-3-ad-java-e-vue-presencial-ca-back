@@ -31,7 +31,4 @@ public class Application {
     @OneToMany
     private List<Log> log;
 
-    @ManyToOne
-    private User user;
-
 }

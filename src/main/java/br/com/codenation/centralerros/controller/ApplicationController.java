@@ -1,6 +1,7 @@
 package br.com.codenation.centralerros.controller;
 
 
+import br.com.codenation.centralerros.dto.entitty.ApplicationDTO;
 import br.com.codenation.centralerros.entity.Application;
 import br.com.codenation.centralerros.exception.MessageException;
 import br.com.codenation.centralerros.services.ApplicationService;
@@ -17,7 +18,7 @@ public class ApplicationController {
     private ApplicationService appService;
 
     @PostMapping
-    public Application save(@RequestBody Application app) throws MessageException {
+    public ApplicationDTO save(@RequestBody ApplicationDTO app) throws MessageException {
         return appService.save(app);
     }
 
@@ -35,5 +36,4 @@ public class ApplicationController {
     public void delete(Long id) throws MessageException {
         appService.delete(id);
     }
-
 }
