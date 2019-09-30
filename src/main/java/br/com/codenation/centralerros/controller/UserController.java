@@ -1,6 +1,5 @@
 package br.com.codenation.centralerros.controller;
 
-import br.com.codenation.centralerros.dto.entitty.UserCodeDTO;
 import br.com.codenation.centralerros.dto.entitty.UserDTO;
 import br.com.codenation.centralerros.entity.User;
 import br.com.codenation.centralerros.exception.MessageException;
@@ -48,8 +47,8 @@ public class UserController {
         userService.delete(userId);
     }
 
-    @GetMapping("/validate")
-    public String validate(@RequestBody UserCodeDTO userCode) {
-        return userService.validateCode(userCode.getCode());
+    @GetMapping("/validate/{code}")
+    public String validate(@PathVariable String code) {
+        return userService.validateCode(code);
     }
 }

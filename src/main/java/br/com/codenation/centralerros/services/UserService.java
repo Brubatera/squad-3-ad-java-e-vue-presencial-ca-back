@@ -60,7 +60,7 @@ public class UserService implements UserServiceInterface {
         if (userRepository.findByCode(userCodeDTO).isPresent()){
             return "Código já existente!";
         }
-        return "Code apto para cadastro!";
+        return "Código apto para cadastro!";
     }
 
     public User saveConfig(User user) {//temporário
