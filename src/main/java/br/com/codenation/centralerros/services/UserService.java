@@ -35,16 +35,25 @@ public class UserService implements UserServiceInterface {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new MessageException("E-mail já utilizado!");
         }
-        if (user.getEmail().isEmpty() || user.getPassword().isEmpty()) {
-            throw new MessageException("Campos incompletos!");
-        }
 
         return userMapper.toDto(userRepository.saveAndFlush(userMapper.map(user)));
     }
 
-    public void delete(Long userId) throws MessageException {
-        if (userRepository.findById(userId).isPresent()) {
-            userRepository.deleteById(userId);
+    public UserDTO update(UserDTO user) throws MessageException {
+        UserDTO toUpdate = userMapper.toDto(userRepository.findById(user.getId()).orElseThrow(MessageException::new));
+        toUpdate.setEmail(user.getEmail());
+        toUpdate.setUserType(user.getUserType());
+        toUpdate.setPassword(user.getPassword());
+
+        return userMapper.toDto(userRepository.save(userMapper.map(toUpdate)));
+    }
+
+
+    public String delete(Long id) throws MessageException {
+        User entity = userRepository.findById(id).orElse(null);
+        userRepository.delete(entity);
+        if (entity != null) {
+            return "Deletado com sucesso!";
         }
         throw new MessageException("Usuário não encontrado!");
     }

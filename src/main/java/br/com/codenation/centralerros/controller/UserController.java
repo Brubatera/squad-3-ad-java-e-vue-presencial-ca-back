@@ -38,13 +38,13 @@ public class UserController {
     })
 
     @PutMapping
-    public User edit(User user) {
-        return null;
+    public UserDTO edit(@RequestBody UserDTO user) throws MessageException {
+        return userService.update(user);
     }
 
-    @DeleteMapping
-    public void delete(Long userId) throws MessageException {
-        userService.delete(userId);
+    @DeleteMapping("/{userId}")
+    public String delete(@PathVariable Long userId) throws MessageException {
+        return userService.delete(userId);
     }
 
     @GetMapping("/validate/{code}")
