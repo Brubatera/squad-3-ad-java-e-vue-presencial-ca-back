@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -25,8 +24,8 @@ public class UserService implements UserServiceInterface {
         return userRepository.findByCode(userCode).orElse(null);
     }
 
-    public Optional<User> findById(Long userId) {
-        return userRepository.findById(userId);
+    public User findById(Long userId) {
+        return userRepository.findById(userId).orElse(null);
     }
 
     public UserDTO save(UserDTO user) throws MessageException {
