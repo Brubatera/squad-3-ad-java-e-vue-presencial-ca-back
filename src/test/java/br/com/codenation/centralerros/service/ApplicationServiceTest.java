@@ -61,7 +61,7 @@ public class ApplicationServiceTest {
         return Application.builder()
                 .id(id)
                 .appName("Amazon Cloud")
-                .company(Company.builder().id(1L).build())
+                .company(Company.builder().code("contaazul").name("Conta Azul").build())
                 .log(null)
                 .build();
     }
@@ -71,6 +71,7 @@ public class ApplicationServiceTest {
                 .id(id)
                 .appName("Amazon Cloud")
                 .codeCompany("contaazul")
+                .nameCompany("Conta Azul")
                 .build();
     }
 

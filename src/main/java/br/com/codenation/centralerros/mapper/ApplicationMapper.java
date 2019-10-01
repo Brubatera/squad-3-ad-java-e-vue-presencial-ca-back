@@ -5,16 +5,16 @@ import br.com.codenation.centralerros.entity.Application;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 
-import java.util.List;
-
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ApplicationMapper {
 
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "appName", target = "appName"),
-            @Mapping(source = "codeCompany", target = "company.code")
+            @Mapping(source = "codeCompany", target = "company.code"),
+            @Mapping(source = "nameCompany", target = "company.name")
     })
     Application map(ApplicationDTO applicationDTO);
 
