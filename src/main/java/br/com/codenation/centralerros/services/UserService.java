@@ -24,9 +24,9 @@ public class UserService implements UserServiceInterface {
         return userRepository.findByCode(userCode).orElse(null);
     }
 
-    public User findById(Long userId) {
-        return userRepository.findById(userId).orElse(null);
-    }
+    //public User findById(Long userId) {
+    //    return userRepository.findById(userId).orElse(null);
+    //}
 
     public UserDTO save(UserDTO user) throws MessageException {
         if (userRepository.findByCode(user.getCode()).isPresent()) {
