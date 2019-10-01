@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/{code}")
-    public User findById(@PathVariable String code) throws MessageException {
+    public User findByCode(@PathVariable String code) throws MessageException {
         return userService.findByCode(code);
     }
 
