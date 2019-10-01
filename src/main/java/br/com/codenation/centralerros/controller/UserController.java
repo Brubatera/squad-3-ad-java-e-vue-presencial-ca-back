@@ -23,9 +23,9 @@ public class UserController {
         return userService.save(user);
     }
 
-    @GetMapping("/{id}")
-    public User findById(@PathVariable Long id) {
-        return userService.findById(id);
+    @GetMapping("/{code}")
+    public User findByCode(@PathVariable String code) throws MessageException {
+        return userService.findByCode(code);
     }
 
     @GetMapping
@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/validate/{code}")
-    public String validate(@PathVariable String code) {
+    public String validate(@PathVariable String code) throws MessageException {
         return userService.validateCode(code);
     }
 }
