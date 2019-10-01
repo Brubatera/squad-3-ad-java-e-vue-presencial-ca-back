@@ -35,6 +35,7 @@ public class Log {
     @CreatedDate
     private LocalDateTime createdAt;
 
+    @Builder.Default
     private Boolean toFile = false;
 
     @Enumerated(EnumType.STRING)
