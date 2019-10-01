@@ -24,9 +24,12 @@ public class UserService implements UserServiceInterface {
         return userRepository.findByCode(userCode).orElse(null);
     }
 
-    //public User findById(Long userId) {
-    //    return userRepository.findById(userId).orElse(null);
-    //}
+    public User findByCode(String userCode) throws MessageException {
+        if (userRepository.findByCode(userCode).isPresent()) {
+            return userRepository.findByCode(userCode).orElse(null);
+        }
+        throw new MessageException("Código não encontrado!");
+    }
 
     public UserDTO save(UserDTO user) throws MessageException {
         if (userRepository.findByCode(user.getCode()).isPresent()) {

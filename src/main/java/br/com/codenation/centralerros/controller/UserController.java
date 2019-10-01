@@ -23,10 +23,10 @@ public class UserController {
         return userService.save(user);
     }
 
-    //@GetMapping("/{id}")
-    //public User findById(@PathVariable Long id) {
-    //    return userService.findById(id);
-    //}
+    @GetMapping("/{code}")
+    public User findById(@PathVariable String code) throws MessageException {
+        return userService.findByCode(code);
+    }
 
     @GetMapping
     public List<User> findAll() {
