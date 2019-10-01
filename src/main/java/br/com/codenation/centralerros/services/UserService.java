@@ -65,9 +65,9 @@ public class UserService implements UserServiceInterface {
         return userRepository.findAll();
     }
 
-    public String validateCode(String userCodeDTO) {
+    public String validateCode(String userCodeDTO) throws MessageException {
         if (userRepository.findByCode(userCodeDTO).isPresent()){
-            return "Código já existente!";
+            throw new MessageException("Código já existente");
         }
         return "Código apto para cadastro!";
     }

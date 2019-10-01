@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/validate/{code}")
-    public String validate(@PathVariable String code) {
+    public String validate(@PathVariable String code) throws MessageException {
         return userService.validateCode(code);
     }
 }
