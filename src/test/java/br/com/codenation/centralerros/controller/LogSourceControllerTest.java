@@ -34,7 +34,7 @@ public class LogSourceControllerTest {
     @Test
     public void deveSalvarLogSource() {
         LogSource logSource = buildLogSource(null);
-        Mockito.when(logSourceController.save(logSource)).thenReturn(buildLogSource(10L));
+        Mockito.when(logSourceService.save(logSource)).thenReturn(buildLogSource(10L));
         LogSource result = logSourceController.save(logSource);
         Assert.assertThat(result.getId(), Matchers.equalTo(10L));
     }
@@ -45,7 +45,7 @@ public class LogSourceControllerTest {
         for (int i = 0; i < 2; i++) {
             logSources.add(buildLogSource(null));
         }
-        Mockito.when(logSourceController.findAll()).thenReturn(logSources);
+        Mockito.when(logSourceService.findAll()).thenReturn(logSources);
         List<LogSource> result = logSourceController.findAll();
         Assert.assertThat(result, Matchers.equalTo(logSources));
     }

@@ -12,4 +12,6 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
 
     List<Application> findApplicationsByCompanyId(Long companyId);
 
+    Optional<Application> findByAppName(String appName);
+
 }

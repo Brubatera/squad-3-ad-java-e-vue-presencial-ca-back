@@ -22,9 +22,9 @@ public class CompanyController {
         return companyService.save(company);
     }
 
-    @GetMapping("/{companyId}")
-    public Company findById(@PathVariable Long companyId) throws MessageException {
-        return companyService.finById(companyId);
+    @GetMapping("/{companyCode}")
+    public Company findByCode(@PathVariable String companyCode) throws MessageException {
+        return companyService.findByCode(companyCode);
     }
 
     @GetMapping
@@ -36,12 +36,12 @@ public class CompanyController {
     }
 
     @PutMapping
-    public Company edit (Company company){
-        return null;
+    public CompanyDTO edit(@RequestBody CompanyDTO user) throws MessageException {
+        return companyService.update(user);
     }
 
-    @DeleteMapping
-    public void delete(Long companyId){
-        companyService.delete(companyId);
+    @DeleteMapping("/{companyId}")
+    public String delete(@PathVariable Long companyId) throws MessageException {
+        return companyService.delete(companyId);
     }
 }

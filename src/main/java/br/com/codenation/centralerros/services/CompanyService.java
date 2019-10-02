@@ -7,7 +7,6 @@ import br.com.codenation.centralerros.mapper.CompanyMapper;
 import br.com.codenation.centralerros.repository.CompanyRepository;
 import br.com.codenation.centralerros.service.interfaces.CompanyServiceInterface;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,9 +26,9 @@ public class CompanyService implements CompanyServiceInterface {
         return companyMapper.toDto(companyRepository.saveAndFlush(companyMapper.map(company)));
     }
 
-    public Company finById(Long companyId) throws MessageException {
-        if (companyRepository.findById(companyId).isPresent()) {
-            return companyRepository.findById(companyId).orElse(null);
+    public Company findByCode(String companyCode) throws MessageException {
+        if (companyRepository.findByCode(companyCode).isPresent()) {
+            return companyRepository.findByCode(companyCode).orElse(null);
         }
         throw new MessageException("Companhia não encontrada!");
     }
@@ -38,8 +37,21 @@ public class CompanyService implements CompanyServiceInterface {
         return companyRepository.findAll();
     }
 
-    public void delete(Long companyId) {
-        companyRepository.deleteById(companyId);
+    public String delete(Long id) throws MessageException {
+        Company entity = companyRepository.findById(id).orElse(null);
+        companyRepository.delete(entity);
+        if (entity != null) {
+            return "Deletado com sucesso!";
+        }
+        throw new MessageException("Companhia não encontrado!");
+    }
+
+    public CompanyDTO update(CompanyDTO company) throws MessageException {
+        CompanyDTO toUpdate = companyMapper.toDto(companyRepository.findById(company.getId()).orElseThrow(MessageException::new));
+        toUpdate.setCode(company.getCode());
+        toUpdate.setName(company.getName());
+
+        return companyMapper.toDto(companyRepository.save(companyMapper.map(toUpdate)));
     }
 
 }
