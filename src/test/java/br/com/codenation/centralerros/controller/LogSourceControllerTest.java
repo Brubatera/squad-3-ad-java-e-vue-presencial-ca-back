@@ -45,7 +45,7 @@ public class LogSourceControllerTest {
         for (int i = 0; i < 2; i++) {
             logSources.add(buildLogSource(null));
         }
-        Mockito.when(logSourceController.findAll()).thenReturn(logSources);
+        Mockito.when(logSourceService.findAll()).thenReturn(logSources);
         List<LogSource> result = logSourceController.findAll();
         Assert.assertThat(result, Matchers.equalTo(logSources));
     }

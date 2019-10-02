@@ -48,7 +48,7 @@ public class UserControllerTest {
     @Test
     public void deveRetornarUmUserDto() throws MessageException {
         UserDTO userDTO = buildUserDTO(null);
-        Mockito.when(userController.save(userDTO)).thenReturn(buildUserDTO(10L));
+        Mockito.when(userService.save(userDTO)).thenReturn(buildUserDTO(10L));
         UserDTO result = userController.save(userDTO);
         Assert.assertThat(result.getId(), Matchers.equalTo(10L));
     }
