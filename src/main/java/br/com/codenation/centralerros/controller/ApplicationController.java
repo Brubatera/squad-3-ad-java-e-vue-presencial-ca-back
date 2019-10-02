@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -25,6 +26,11 @@ public class ApplicationController {
     @GetMapping
     public List<Application> findAll() throws MessageException {
         return appService.findAll();
+    }
+
+    @GetMapping
+    public Optional<Application> findById(Long appId) throws MessageException{
+        return appService.findById(appId);
     }
 
     @PutMapping

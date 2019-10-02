@@ -35,8 +35,10 @@ public class ApplicationService implements ApplicationServiceInterface {
 
     }
 
-
-    public Optional<Application> findById(Long appId) {
+    public Optional<Application> findById(Long appId) throws MessageException {
+        if (!applicationRepository.findById(appId).isPresent()) {
+            throw new MessageException("Aplicação inexistente!");
+        }
         return applicationRepository.findById(appId);
     }
 

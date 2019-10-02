@@ -71,7 +71,7 @@ public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
     }
 
     private void saveUser(AuthenticationManagerBuilder auth) throws Exception {
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i <= 1; i++) {
             User usuario = new User();
             usuario.setPassword("User" + i);
             usuario.setEmail("User" + i + "@gmail.com");
