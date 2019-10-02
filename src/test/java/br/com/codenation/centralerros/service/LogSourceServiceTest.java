@@ -32,7 +32,7 @@ public class LogSourceServiceTest {
     @Test
     public void deveSalvarLogSource() {
         LogSource logSource = buildLogSource(null);
-        Mockito.when(logSourceRepository.save(logSource)).thenReturn(buildLogSource(10L));
+        Mockito.when(logSourceService.save(logSource)).thenReturn(buildLogSource(10L));
         LogSource result = logSourceService.save(logSource);
         Assert.assertThat(result.getId(), Matchers.equalTo(10L));
 
@@ -52,7 +52,7 @@ public class LogSourceServiceTest {
         for (int i = 0; i < 2; i++) {
             logSources.add(buildLogSource(null));
         }
-        Mockito.when(logSourceRepository.findAll()).thenReturn(logSources);
+        Mockito.when(logSourceService.findAll()).thenReturn(logSources);
         List<LogSource> result = logSourceService.findAll();
         Assert.assertThat(result, Matchers.equalTo(logSources));
     }
