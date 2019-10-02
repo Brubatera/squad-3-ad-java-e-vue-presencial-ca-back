@@ -28,8 +28,8 @@ public class ApplicationController {
         return appService.findAll();
     }
 
-    @GetMapping
-    public Optional<Application> findById(Long appId) throws MessageException{
+    @GetMapping("/{id}")
+    public Optional<Application> findById(@PathVariable("id") Long appId) throws MessageException{
         return appService.findById(appId);
     }
 
