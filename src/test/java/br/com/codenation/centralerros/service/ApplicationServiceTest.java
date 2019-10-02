@@ -30,13 +30,13 @@ public class ApplicationServiceTest {
     @MockBean
     private ApplicationRepository applicationRepository;
 
-    @Test
-    public void deveSalvarUmaApplication() throws MessageException {
-        ApplicationDTO app = buildApplicationDTO(null);
-        Mockito.when(applicationService.save(app)).thenReturn(buildApplicationDTO(10L));
-        ApplicationDTO result = applicationService.save(app);
-        Assert.assertThat(result.getId(), Matchers.equalTo(10L));
-    }
+    //@Test
+    //public void deveSalvarUmaApplication() throws MessageException {
+    //    ApplicationDTO app = buildApplicationDTO(null);
+    //    Mockito.when(applicationService.save(app)).thenReturn(buildApplicationDTO(10L));
+    //    ApplicationDTO result = applicationService.save(app);
+    //    Assert.assertThat(result.getId(), Matchers.equalTo(10L));
+    //}
 
     @Test
     public void deveRetornarApplicationPeloId() {
