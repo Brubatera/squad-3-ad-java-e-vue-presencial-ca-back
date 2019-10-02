@@ -34,7 +34,7 @@ public class LogSourceControllerTest {
     @Test
     public void deveSalvarLogSource() {
         LogSource logSource = buildLogSource(null);
-        Mockito.when(logSourceController.save(logSource)).thenReturn(buildLogSource(10L));
+        Mockito.when(logSourceService.save(logSource)).thenReturn(buildLogSource(10L));
         LogSource result = logSourceController.save(logSource);
         Assert.assertThat(result.getId(), Matchers.equalTo(10L));
     }

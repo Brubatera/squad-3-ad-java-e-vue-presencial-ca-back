@@ -56,7 +56,7 @@ public class UserControllerTest {
     @Test
     public void deveRetornarUserLogado() throws MessageException {
         UserDTO user = buildUserDTO(null);
-        Mockito.when(loginController.login(user)).thenReturn(buildUser(10L));
+        Mockito.when(loginService.login(user)).thenReturn(buildUser(10L));
         User result = loginController.login(user);
         Assert.assertThat(result.getId(), Matchers.equalTo(10L));
     }
