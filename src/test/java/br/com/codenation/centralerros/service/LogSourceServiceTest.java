@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -40,7 +41,7 @@ public class LogSourceServiceTest {
     @Test
     public void deveRetornarLogSourcePeloId() throws MessageException {
         LogSource logSource = buildLogSource(null);
-        Mockito.when(logSourceService.findBydId(logSource.getId())).thenReturn(buildLogSource(10L));
+        Mockito.when(logSourceRepository.findById(logSource.getId())).thenReturn(Optional.of(buildLogSource(10L)));
         LogSource result = logSourceService.findBydId(logSource.getId());
         Assert.assertThat(result.getId(), Matchers.equalTo(10L));
     }
