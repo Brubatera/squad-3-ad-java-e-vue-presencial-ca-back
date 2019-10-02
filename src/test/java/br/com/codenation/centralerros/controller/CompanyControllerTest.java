@@ -34,15 +34,15 @@ public class CompanyControllerTest {
     @Test
     public void deveSalvarUmaCompanhiaDto() throws MessageException {
         CompanyDTO company = buildCompanyDTO("company");
-        Mockito.when(companyController.save(company)).thenReturn(buildCompanyDTO("company"));
+        Mockito.when(companyService.save(company)).thenReturn(buildCompanyDTO("company"));
         CompanyDTO result = companyController.save(company);
         Assert.assertThat(result.getCode(), Matchers.equalTo("company"));
     }
 
     @Test
-    public void deveRetornarCompanhiaPeloId() throws MessageException {
+    public void deveRetornarCompanhiaPeloCode() throws MessageException {
         CompanyDTO company = buildCompanyDTO("company");
-        Mockito.when(companyController.findByCode(company.getCode())).thenReturn(buildCompany("company"));
+        Mockito.when(companyService.findByCode(company.getCode())).thenReturn(buildCompany("company"));
         Company result = companyController.findByCode(company.getCode());
         Assert.assertThat(result.getCode(), Matchers.equalTo("company"));
     }
@@ -53,7 +53,7 @@ public class CompanyControllerTest {
         for (int i = 0; i < 2; i++) {
             companies.add(buildCompany(null));
         }
-        Mockito.when(companyController.findAll()).thenReturn(companies);
+        Mockito.when(companyService.findAll()).thenReturn(companies);
         List<Company> result = companyController.findAll();
         Assert.assertThat(result, Matchers.equalTo(companies));
     }
