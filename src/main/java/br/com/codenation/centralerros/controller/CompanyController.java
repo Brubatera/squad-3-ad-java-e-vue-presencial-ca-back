@@ -22,9 +22,9 @@ public class CompanyController {
         return companyService.save(company);
     }
 
-    @GetMapping("/{companyCode}")
-    public Company findByCode(@PathVariable String companyCode) throws MessageException {
-        return companyService.findByCode(companyCode);
+    @GetMapping("/{companyId}")
+    public Company findByCode(@PathVariable Long companyId) throws MessageException {
+        return companyService.findByCode(companyId);
     }
 
     @GetMapping
