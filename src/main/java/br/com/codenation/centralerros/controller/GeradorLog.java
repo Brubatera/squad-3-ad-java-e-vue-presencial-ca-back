@@ -30,7 +30,7 @@ public class GeradorLog {
             log.setLevelLog(getLevelLog());
             log.setCreatedAt(LocalDateTime.now());
             logService.save(log);
-            Thread.sleep(15000);
+            Thread.sleep(7500);
         }
     }
 
