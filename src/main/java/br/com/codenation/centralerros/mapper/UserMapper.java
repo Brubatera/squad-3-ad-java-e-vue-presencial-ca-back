@@ -5,10 +5,11 @@ import br.com.codenation.centralerros.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
 
     @Mappings({
@@ -18,10 +19,6 @@ public interface UserMapper {
             @Mapping(source = "password", target = "password"),
             @Mapping(source = "email", target = "email"),
             @Mapping(source = "userType", target = "userType"),
-            @Mapping(target = "creationDate", source = ""),
-            @Mapping(target = "itensPerPage", source = ""),
-            @Mapping(target = "token", source = ""),
-            @Mapping(target = "company", source = "")
     })
     User map(UserDTO user);
 
