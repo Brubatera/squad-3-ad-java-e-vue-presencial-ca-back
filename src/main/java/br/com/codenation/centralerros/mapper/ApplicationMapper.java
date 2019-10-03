@@ -14,7 +14,6 @@ public interface ApplicationMapper {
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "appName", target = "appName"),
             @Mapping(source = "codeCompany", target = "company.code"),
-            @Mapping(source = "nameCompany", target = "company.name")
     })
     Application map(ApplicationDTO applicationDTO);
 
