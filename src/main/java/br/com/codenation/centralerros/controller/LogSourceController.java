@@ -1,5 +1,6 @@
 package br.com.codenation.centralerros.controller;
 
+import br.com.codenation.centralerros.dto.entitty.LogSourceDTO;
 import br.com.codenation.centralerros.entity.LogSource;
 import br.com.codenation.centralerros.exception.MessageException;
 import br.com.codenation.centralerros.services.LogSourceService;
@@ -16,7 +17,7 @@ public class LogSourceController {
     private LogSourceService logSourceService;
 
     @GetMapping
-    public List<LogSource> findAll() {
+    public List<LogSourceDTO> findAll() {
         return logSourceService.findAll();
     }
 
@@ -26,12 +27,12 @@ public class LogSourceController {
     }
 
     @PostMapping
-    public LogSource save(@RequestBody LogSource logSource) {
+    public LogSourceDTO save(@RequestBody LogSourceDTO logSource) {
         return logSourceService.save(logSource);
     }
 
     @PutMapping
-    public LogSource update(@RequestBody LogSource logSource) throws MessageException {
+    public LogSourceDTO update(@RequestBody LogSourceDTO logSource) throws MessageException {
         return logSourceService.update(logSource);
     }
 
