@@ -44,7 +44,7 @@ public class CompanyControllerTest {
         CompanyDTO company = buildCompanyDTO(null);
         Mockito.when(companyController.findById(company.getId())).thenReturn(buildCompany(10L));
         Company result = companyController.findById(company.getId());
-        Assert.assertThat(result.getId(), Matchers.equalTo(10L));
+        Assert.assertThat(result.getCode(), Matchers.equalTo(10L));
     }
 
     @Test
