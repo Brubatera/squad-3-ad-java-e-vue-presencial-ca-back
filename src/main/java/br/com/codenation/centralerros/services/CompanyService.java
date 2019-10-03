@@ -26,7 +26,7 @@ public class CompanyService implements CompanyServiceInterface {
         return companyMapper.toDto(companyRepository.saveAndFlush(companyMapper.map(company)));
     }
 
-    public Company findByCode(Long companyId) throws MessageException {
+    public Company findById(Long companyId) throws MessageException {
         if (companyRepository.findById(companyId).isPresent()) {
             return companyRepository.findById(companyId).orElse(null);
         }

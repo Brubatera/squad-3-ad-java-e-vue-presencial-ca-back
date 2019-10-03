@@ -23,8 +23,8 @@ public class CompanyController {
     }
 
     @GetMapping("/{companyId}")
-    public Company findByCode(@PathVariable Long companyId) throws MessageException {
-        return companyService.findByCode(companyId);
+    public Company findById(@PathVariable Long companyId) throws MessageException {
+        return companyService.findById(companyId);
     }
 
     @GetMapping
