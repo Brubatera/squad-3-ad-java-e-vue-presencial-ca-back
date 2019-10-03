@@ -14,11 +14,9 @@ public interface UserMapper {
 
     @Mappings({
             @Mapping(source = "id", target = "id"),
-            @Mapping(source = "code", target = "code"),
             @Mapping(source = "name", target = "name"),
-            @Mapping(source = "password", target = "password"),
-            @Mapping(source = "email", target = "email"),
             @Mapping(source = "userType", target = "userType"),
+            @Mapping(source = "company", target = "company")
     })
     User map(UserDTO user);
 
