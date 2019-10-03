@@ -5,7 +5,6 @@ import br.com.codenation.centralerros.entity.Application;
 import br.com.codenation.centralerros.exception.MessageException;
 import br.com.codenation.centralerros.mapper.ApplicationMapper;
 import br.com.codenation.centralerros.repository.ApplicationRepository;
-import br.com.codenation.centralerros.repository.CompanyRepository;
 import br.com.codenation.centralerros.service.interfaces.ApplicationServiceInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,6 @@ import java.util.Optional;
 public class ApplicationService implements ApplicationServiceInterface {
 
     private ApplicationRepository applicationRepository;
-    private CompanyRepository companyRepository;
     private ApplicationMapper applicationMapper;
 
     //public ApplicationDTO save(ApplicationDTO application) {

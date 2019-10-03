@@ -14,5 +14,4 @@ public class ApplicationDTO {
     private Long id;
     private String appName;
     private String codeCompany;
-    private String nameCompany;
 }
