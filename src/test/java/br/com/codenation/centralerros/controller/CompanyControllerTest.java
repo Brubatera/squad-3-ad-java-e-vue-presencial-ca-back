@@ -36,7 +36,7 @@ public class CompanyControllerTest {
         CompanyDTO company = buildCompanyDTO(null);
         Mockito.when(companyController.save(company)).thenReturn(buildCompanyDTO(10L));
         CompanyDTO result = companyController.save(company);
-        Assert.assertThat(result.getCode(), Matchers.equalTo("company"));
+        Assert.assertThat(result.getId(), Matchers.equalTo(10L));
     }
 
     @Test
@@ -44,11 +44,11 @@ public class CompanyControllerTest {
         CompanyDTO company = buildCompanyDTO(null);
         Mockito.when(companyController.findById(company.getId())).thenReturn(buildCompany(10L));
         Company result = companyController.findById(company.getId());
-        Assert.assertThat(result.getCode(), Matchers.equalTo(10L));
+        Assert.assertThat(result.getId(), Matchers.equalTo(10L));
     }
 
     @Test
-    public void deveRetornarUmaListaDeCompanhias() throws MessageException {
+    public void deveRetornarUmaListaDeCompanhias() {
         List<Company> companies = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             companies.add(buildCompany(null));
