@@ -18,8 +18,8 @@ public class LoginService implements LoginServiceInterface {
     private LoginRepository loginRepository;
 
     public User login(UserDTO user) throws MessageException {
-        if (loginRepository.findByCodeAndPassword(user.getCode(), user.getPassword()).isPresent()) {
-            return loginRepository.findByCodeAndPassword(user.getCode(), user.getPassword()).orElse(null);
+        if (loginRepository.findByCode(user.getCode()).isPresent()) {
+            return loginRepository.findByCode(user.getCode()).orElse(null);
         }
 
         throw new MessageException("Usuário ou senha inválidos.");
