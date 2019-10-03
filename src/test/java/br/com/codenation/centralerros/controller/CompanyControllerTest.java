@@ -33,18 +33,18 @@ public class CompanyControllerTest {
 
     @Test
     public void deveSalvarUmaCompanhiaDto() throws MessageException {
-        CompanyDTO company = buildCompanyDTO("company");
-        Mockito.when(companyController.save(company)).thenReturn(buildCompanyDTO("company"));
+        CompanyDTO company = buildCompanyDTO(null);
+        Mockito.when(companyController.save(company)).thenReturn(buildCompanyDTO(10L));
         CompanyDTO result = companyController.save(company);
         Assert.assertThat(result.getCode(), Matchers.equalTo("company"));
     }
 
     @Test
     public void deveRetornarCompanhiaPeloCode() throws MessageException {
-        CompanyDTO company = buildCompanyDTO("company");
-        Mockito.when(companyController.findByCode(company.getCode())).thenReturn(buildCompany("company"));
-        Company result = companyController.findByCode(company.getCode());
-        Assert.assertThat(result.getCode(), Matchers.equalTo("company"));
+        CompanyDTO company = buildCompanyDTO(null);
+        Mockito.when(companyController.findById(company.getId())).thenReturn(buildCompany(10L));
+        Company result = companyController.findById(company.getId());
+        Assert.assertThat(result.getCode(), Matchers.equalTo(10L));
     }
 
     @Test
@@ -58,18 +58,18 @@ public class CompanyControllerTest {
         Assert.assertThat(result, Matchers.equalTo(companies));
     }
 
-    private CompanyDTO buildCompanyDTO(String company) {
+    private CompanyDTO buildCompanyDTO(Long id) {
         return CompanyDTO.builder()
-                .id(null)
-                .code(company)
+                .id(id)
+                .code("contaazul")
                 .name("Conta Azul SA")
                 .build();
     }
 
-    private Company buildCompany(String company) {
+    private Company buildCompany(Long id) {
         return Company.builder()
-                .id(null)
-                .code(company)
+                .id(id)
+                .code("contaazul")
                 .name("Conta Azul SA")
                 .application(null)
                 .build();
