@@ -20,13 +20,13 @@ public class CompanyService implements CompanyServiceInterface {
 
 
     public CompanyDTO save(CompanyDTO company) throws MessageException {
-        if (companyRepository.findById(company.getId()).isPresent()) {
+        if (companyRepository.findByCode(company.getCode()).isPresent()) {
             throw new MessageException("Companhia já cadastrada.");
         }
         return companyMapper.toDto(companyRepository.saveAndFlush(companyMapper.map(company)));
     }
 
-    public Company findByCode(Long companyId) throws MessageException {
+    public Company findById(Long companyId) throws MessageException {
         if (companyRepository.findById(companyId).isPresent()) {
             return companyRepository.findById(companyId).orElse(null);
         }

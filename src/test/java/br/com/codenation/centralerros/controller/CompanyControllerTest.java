@@ -40,10 +40,10 @@ public class CompanyControllerTest {
     }
 
     @Test
-    public void deveRetornarCompanhiaPeloCode() throws MessageException {
+    public void deveRetornarCompanhiaPeloId() throws MessageException {
         CompanyDTO company = buildCompanyDTO("company");
-        Mockito.when(companyController.findByCode(company.getCode())).thenReturn(buildCompany("company"));
-        Company result = companyController.findByCode(company.getCode());
+        Mockito.when(companyController.findByCode(company.getId())).thenReturn(buildCompany("company"));
+        Company result = companyController.findByCode(company.getId());
         Assert.assertThat(result.getCode(), Matchers.equalTo("company"));
     }
 
